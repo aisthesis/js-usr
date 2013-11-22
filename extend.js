@@ -18,14 +18,16 @@
  *    deprecated) is eliminated.
  */
 
+var _c = _c || {};
+
 (function () {
     "use strict";
     var initializing = false;
 
     // generic base class
-    window.Base = function() {};
+    _c.Base = function() {};
 
-    Base.extend = function extend(properties) {
+    _c.Base.extend = function extend(properties) {
         var _super = this.prototype,
             proto,
             name;

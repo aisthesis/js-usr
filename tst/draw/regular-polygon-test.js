@@ -1,21 +1,21 @@
 test( "regular polygon test contains(point)", function() {
-    var polygon = new RegularPolygon({
-            center: new Point(0, 0),
+    var polygon = new _c.draw.RegularPolygon({
+            center: new _c.draw.Point(0, 0),
             radius: 100,
             sides: 5
         }),
         outerPoints = [
-            new Point(-75, -75),
-            new Point(75, -75),
-            new Point(75, 75),
-            new Point(-75, 75)
+            new _c.draw.Point(-75, -75),
+            new _c.draw.Point(75, -75),
+            new _c.draw.Point(75, 75),
+            new _c.draw.Point(-75, 75)
         ],
         // inner radius is 80.9
         innerPoints = [
-            new Point(-56, -56),
-            new Point(-56, 56),
-            new Point(56, 56),
-            new Point(56, -56)
+            new _c.draw.Point(-56, -56),
+            new _c.draw.Point(-56, 56),
+            new _c.draw.Point(56, 56),
+            new _c.draw.Point(56, -56)
         ],
         outerPointEasyCases = outerPoints.length,
         innerPointEasyCases = innerPoints.length,
@@ -26,13 +26,13 @@ test( "regular polygon test contains(point)", function() {
 
     angle = 0;
     for (i = 0; i < polygon.sides; i++) {
-        outerPoints.push(new Point(middleDistance * Math.cos(angle  + Math.PI / polygon.sides - angleDiff), 
+        outerPoints.push(new _c.draw.Point(middleDistance * Math.cos(angle  + Math.PI / polygon.sides - angleDiff), 
             middleDistance * Math.sin(angle  + Math.PI / polygon.sides - angleDiff)));
-        outerPoints.push(new Point(middleDistance * Math.cos(angle  + Math.PI / polygon.sides + angleDiff), 
+        outerPoints.push(new _c.draw.Point(middleDistance * Math.cos(angle  + Math.PI / polygon.sides + angleDiff), 
             middleDistance * Math.sin(angle  + Math.PI / polygon.sides + angleDiff)));
-        innerPoints.push(new Point(middleDistance * Math.cos(angle - angleDiff), 
+        innerPoints.push(new _c.draw.Point(middleDistance * Math.cos(angle - angleDiff), 
             middleDistance * Math.sin(angle - angleDiff)));
-        innerPoints.push(new Point(middleDistance * Math.cos(angle + angleDiff), 
+        innerPoints.push(new _c.draw.Point(middleDistance * Math.cos(angle + angleDiff), 
             middleDistance * Math.sin(angle + angleDiff)));
         angle += Math.PI * 2 / polygon.sides;
     }

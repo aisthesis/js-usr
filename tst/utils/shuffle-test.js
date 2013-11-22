@@ -5,7 +5,7 @@ test( "full shuffle test", function() {
         i, j;
     
     for (i = 1; i <= repetitions; i++) {
-        _c.shuffle(items);
+        _c.utils.shuffle(items);
         for (j = 0; j < items.length; j++) {
             if (items[j] !== j) { changed[j] = true; }
         }
@@ -24,7 +24,7 @@ test( "partial shuffle test", function() {
         i, j;
     
     for (i = 1; i <= repetitions; i++) {
-        _c.shuffle(items, depth);
+        _c.utils.shuffle(items, depth);
         for (j = 0; j < depth; j++) {
             if (items[j] !== j) { changed[j] = true; }
         }

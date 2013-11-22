@@ -11,55 +11,62 @@
  * extend.js
  */
 
-var Shape = Base.extend({
-    init: function(params) {
-        this.fillStyle = params.fillStyle || 'white';
-        this.strokeStyle = params.strokeStyle || 'black';
-        this.lineWidth = params.lineWidth || 1;
-    },
+var _c = _c || {};
 
-    render: function(context, callback) {
-        context.save();
-        this.buildPath(context);
-        callback();
-        context.restore();
-    },
+(function(_c) {
+    "use strict";
 
-    fill: function(context) {
-        var _this = this;
+    _c.draw = _c.draw || {};
+    _c.draw.Shape = _c.Base.extend({
+        init: function(params) {
+            this.fillStyle = params.fillStyle || 'white';
+            this.strokeStyle = params.strokeStyle || 'black';
+            this.lineWidth = params.lineWidth || 1;
+        },
 
-        this.render(context, function() {
-            context.fillStyle = _this.fillStyle || 'white';
-            context.fill();
-        });
-    },
+        render: function(context, callback) {
+            context.save();
+            this.buildPath(context);
+            callback();
+            context.restore();
+        },
 
-    stroke: function(context) {
-        var _this = this;
+        fill: function(context) {
+            var _this = this;
 
-        this.render(context, function() {
-            context.strokeStyle = _this.strokeStyle || 'black';
-            context.lineWidth = _this.lineWidth || 1;
-            context.stroke();
-        });
-    },
+            this.render(context, function() {
+                context.fillStyle = _this.fillStyle || 'white';
+                context.fill();
+            });
+        },
 
-    draw: function(context) {
-        var _this = this;
+        stroke: function(context) {
+            var _this = this;
 
-        this.render(context, function() {
-            context.strokeStyle = _this.strokeStyle || 'black';
-            context.lineWidth = _this.lineWidth || 1;
-            context.fillStyle = _this.fillStyle || 'white';
-            context.fill();
-            context.stroke();
-        });
-    },
+            this.render(context, function() {
+                context.strokeStyle = _this.strokeStyle || 'black';
+                context.lineWidth = _this.lineWidth || 1;
+                context.stroke();
+            });
+        },
 
-    /**
-     * abstract method
-     */
-    buildPath: function(context) {
-        alert('Subclasses must override buildPath()!');
-    }
-});
+        draw: function(context) {
+            var _this = this;
+
+            this.render(context, function() {
+                context.strokeStyle = _this.strokeStyle || 'black';
+                context.lineWidth = _this.lineWidth || 1;
+                context.fillStyle = _this.fillStyle || 'white';
+                context.fill();
+                context.stroke();
+            });
+        },
+
+        /**
+         * abstract method
+         */
+        buildPath: function(context) {
+            alert('Subclasses must override buildPath()!');
+        }
+    });
+})(_c);

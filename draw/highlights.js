@@ -4,11 +4,12 @@
  * value is highlight color
  */
 
-var codeMelon = codeMelon || {};
-codeMelon.games = codeMelon.games || {};
+var _c = _c || {};
 
-codeMelon.games.highlights = {
-    // named colors
-    'cornflowerblue': 'deepskyblue',
-    'goldenrod': 'gold'
-};
+(function(_c) {
+    _c.draw.highlights = {
+        // named colors
+        'cornflowerblue': 'deepskyblue',
+        'goldenrod': 'gold'
+    };
+})(_c);

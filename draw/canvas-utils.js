@@ -3,15 +3,16 @@
  * extend.js
  * point.js
  */
-var codeMelon = codeMelon || {};
-codeMelon.games = codeMelon.games || {};
 
-(function(_cg) {
+var _c = _c || {};
+
+(function(_c) {
     "use strict";
 
-    _cg.windowToCanvas = function(canvas, x, y) {
+    _c.draw = _c.draw || {};
+    _c.draw.windowToCanvas = function(canvas, x, y) {
         var bbox = canvas.getBoundingClientRect();
 
-        return new Point(x - bbox.left, y - bbox.top);
+        return new _c.draw.Point(x - bbox.left, y - bbox.top);
     }
-})(codeMelon.games);
+})(_c);

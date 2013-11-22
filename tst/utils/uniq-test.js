@@ -1,4 +1,4 @@
-var codeMelon = codeMelon || {};
+var _c = _c || {};
 
 (function(_c) {
     _c.utils = _c.utils || {};
@@ -23,4 +23,4 @@ var codeMelon = codeMelon || {};
             ok(result.indexOf(testcase[i]) > -1, "result contains all items in original string");
         }
     });
-})(codeMelon);
+})(_c);

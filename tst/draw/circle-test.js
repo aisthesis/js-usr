@@ -1,27 +1,27 @@
 test( "Circle#contains() test", function() {
-    var circle = new Circle({
-            center: new Point(0, 0),
+    var circle = new _c.draw.Circle({
+            center: new _c.draw.Point(0, 0),
             radius: 100
         }),
         outerPoints = [
-            new Point(-71, -71),
-            new Point(71, -71),
-            new Point(71, 71),
-            new Point(-71, 71),
-            new Point(101, 0),
-            new Point(0, 101),
-            new Point(-101, 0),
-            new Point(0, -101)
+            new _c.draw.Point(-71, -71),
+            new _c.draw.Point(71, -71),
+            new _c.draw.Point(71, 71),
+            new _c.draw.Point(-71, 71),
+            new _c.draw.Point(101, 0),
+            new _c.draw.Point(0, 101),
+            new _c.draw.Point(-101, 0),
+            new _c.draw.Point(0, -101)
         ],
         innerPoints = [
-            new Point(-70, -70),
-            new Point(70, -70),
-            new Point(70, 70),
-            new Point(-70, 70),
-            new Point(99.9, 0),
-            new Point(0, 99.9),
-            new Point(-99.9, 0),
-            new Point(0, -99.9)
+            new _c.draw.Point(-70, -70),
+            new _c.draw.Point(70, -70),
+            new _c.draw.Point(70, 70),
+            new _c.draw.Point(-70, 70),
+            new _c.draw.Point(99.9, 0),
+            new _c.draw.Point(0, 99.9),
+            new _c.draw.Point(-99.9, 0),
+            new _c.draw.Point(0, -99.9)
         ],
         i;
 

@@ -1,4 +1,4 @@
-var Person = Base.extend({
+var Person = _c.Base.extend({
     init: function(isDancing) {
         this.dancing = isDancing;
     },
@@ -25,7 +25,7 @@ test( "inheritance test", function() {
     var ninja = new Ninja();
     ok(ninja.swingSword(), "sword swinging");
     ok(ninja.dance(), "ninja is dancing");
-    ok(person instanceof Base, "person instance of Base");
+    ok(person instanceof _c.Base, "person instance of Base");
     ok(person instanceof Person, "person instance of Person");
     ok(ninja instanceof Ninja, "ninja instance of Ninja");
     ok(ninja instanceof Person, "ninja instance of Person");
