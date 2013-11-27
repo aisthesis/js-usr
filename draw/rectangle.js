@@ -19,8 +19,9 @@ var _c = _c || {};
             this._super(params);
             // required
             this.corner = params.corner;
-            this.width = params.width;
-            this.height = params.height;
+            // default to 0
+            this.width = params.width || 0;
+            this.height = params.height || 0;
         },
 
         buildPath: function(context) {
