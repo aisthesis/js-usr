@@ -25,23 +25,34 @@ var _c = _c || {};
         },
 
         buildPath: function(context) {
-            var width = Math.abs(this.width),
-                height = Math.abs(this.height),
-                x = this.width >= 0 ? this.corner.x : this.corner.x + this.width,
-                y = this.height >= 0 ? this.corner.y : this.corner.y + this.height;
-
             context.beginPath();
-            context.rect(x, y, width, height);
+            context.rect(this.left(), this.top(), this.absoluteWidth(), this.absoluteHeight());
             context.closePath();
         },
         
         contains: function(point) {
-            var xMin = this.width >= 0 ? this.corner.x : this.corner.x + this.width,
-                yMin = this.height >= 0 ? this.corner.y : this.corner.y + this.height;
+            var xMin = this.left(),
+                yMin = this.top();
 
-            if (point.x < xMin || xMin + Math.abs(this.width) < point.x) { return false; }
-            if (point.y < yMin || yMin + Math.abs(this.height) < point.y) { return false; }
+            if (point.x < xMin || xMin + this.absoluteWidth() < point.x) { return false; }
+            if (point.y < yMin || yMin + this.absoluteHeight() < point.y) { return false; }
             return true;
+        },
+
+        left: function() {
+            return this.width >= 0 ? this.corner.x : this.corner.x + this.width;
+        },
+
+        top: function() {
+            return this.height >= 0 ? this.corner.y : this.corner.y + this.height;
+        },
+
+        absoluteWidth: function() {
+            return Math.abs(this.width);
+        },
+
+        absoluteHeight: function() {
+            return Math.abs(this.height);
         }
     });
 })(_c);
