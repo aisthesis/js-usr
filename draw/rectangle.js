@@ -26,7 +26,7 @@ var _c = _c || {};
 
         buildPath: function(context) {
             context.beginPath();
-            context.rect(this.left(), this.top(), this.absoluteWidth(), this.absoluteHeight());
+            context.rect(this.left(), this.top(), this.absWidth(), this.absHeight());
             context.closePath();
         },
         
@@ -34,8 +34,8 @@ var _c = _c || {};
             var xMin = this.left(),
                 yMin = this.top();
 
-            if (point.x < xMin || xMin + this.absoluteWidth() < point.x) { return false; }
-            if (point.y < yMin || yMin + this.absoluteHeight() < point.y) { return false; }
+            if (point.x < xMin || xMin + this.absWidth() < point.x) { return false; }
+            if (point.y < yMin || yMin + this.absHeight() < point.y) { return false; }
             return true;
         },
 
@@ -47,11 +47,11 @@ var _c = _c || {};
             return this.height >= 0 ? this.corner.y : this.corner.y + this.height;
         },
 
-        absoluteWidth: function() {
+        absWidth: function() {
             return Math.abs(this.width);
         },
 
-        absoluteHeight: function() {
+        absHeight: function() {
             return Math.abs(this.height);
         }
     });
