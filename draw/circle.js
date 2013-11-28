@@ -22,7 +22,6 @@ var _c = _c || {};
             context.beginPath();
             context.arc(this.center.x, this.center.y, this.radius, 
                 0, Math.PI * 2, false);
-            context.closePath();
         },
 
         contains: function(point) {

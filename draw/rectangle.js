@@ -27,7 +27,6 @@ var _c = _c || {};
         buildPath: function(context) {
             context.beginPath();
             context.rect(this.left(), this.top(), this.absWidth(), this.absHeight());
-            context.closePath();
         },
         
         contains: function(point) {

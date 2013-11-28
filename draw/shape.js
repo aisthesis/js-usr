@@ -31,6 +31,13 @@ var _c = _c || {};
             context.restore();
         },
 
+        clip: function(context, callback) {
+            this.render(context, function() {
+                context.clip();
+                callback();
+            });
+        },
+
         fill: function(context) {
             var _this = this;
 
