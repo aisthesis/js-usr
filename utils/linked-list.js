@@ -48,7 +48,7 @@ var _c = _c || {};
         /**
          * Appends the specified item to the end of the list
          */
-        add: function(item) {
+        push: function(item) {
             insert(this, item, function(context, node) {
                 context.tail.next = node;
                 node.prev = context.tail;
@@ -59,7 +59,7 @@ var _c = _c || {};
         /**
          * Inserts the specified item at the front of the list
          */
-        push: function(item) {
+        add: function(item) {
             insert(this, item, function(context, node) {
                 node.next = context.head;
                 context.head.prev = node;
@@ -71,7 +71,7 @@ var _c = _c || {};
          * Removes and returns the first element of this list
          * @throws {NoSuchElementException} If the list is empty 
          */
-        pop: function() {
+        remove: function() {
             return extract(this, function(context) {
                 var result = context.head.item;
 
@@ -86,7 +86,7 @@ var _c = _c || {};
          * Removes and returns the last element of this list
          * @throws {NoSuchElementException} If the list is empty 
          */
-        remove: function() {
+        pop: function() {
             return extract(this, function(context) {
                 var result = context.tail.item;
 
@@ -99,6 +99,19 @@ var _c = _c || {};
 
         iterator: function() {
             return new _Iterator(this);
+        },
+
+        /**
+         * @callback Operation to be performed successively on each item in the list
+         * @param item - item on which callback operates.
+         */
+        forEach: function(callback) {
+            var node = this.head;
+
+            while (node !== null) {
+                callback(node.item);
+                node = node.next;
+            }
         }
     });
 
@@ -109,8 +122,12 @@ var _c = _c || {};
      * @param {Object} context - calling object ('this')
      * @param item
      * @param {Function} callback - callback will be applied to 2 parameters:
-     *     context (passed to insert() itself)
-     *     node - an object containing an item and a 'next' property
+     */
+    /**
+     * @callback Operation to be performed when the list isn't empty
+     * @param {object} context - context on which the callback acts
+     * @param {object} node - node containing an item and pointers to
+     * 'next' and 'prev' nodes
      */
     function insert(context, item, callback) {
         var node = {

@@ -23,41 +23,11 @@ var _c = _c || {};
         });
     };
 
-    test('LinkedList#add()', function() {
-        addItems();
-        strictEqual(itemsList.length, itemsArray.length, 'list has correct length');
-        strictEqual(itemsList.head.item, itemsArray[0], 'correct item at head of list');
-        strictEqual(itemsList.tail.item, itemsArray[itemsArray.length - 1], 'correct item at end of list');
-    });
-
-    test('LinkedList#pop()', function() {
-        var expectedLength = itemsArray.length;
-
-        addItems();
-        itemsArray.forEach(function(val) {
-            strictEqual(itemsList.length, expectedLength--, 'list has correct length');
-            strictEqual(itemsList.pop(), val, 'correct value removed from list');
-        });
-        strictEqual(itemsList.length, 0, 'length 0 after all items removed');
-        throws(function() {
-                itemsList.pop();
-            },
-            _c.error.NoSuchElementException,
-            'raised error calling pop() on empty list is an instance of NoSuchElementException'
-        );
-        throws(function() {
-                itemsList.pop();
-            },
-            Error,
-            'raised error calling pop() on empty list is an instance of Error'
-        );
-    });
-
     test('LinkedList#push()', function() {
         pushItems();
         strictEqual(itemsList.length, itemsArray.length, 'list has correct length');
-        strictEqual(itemsList.head.item, itemsArray[itemsArray.length - 1], 'correct item at head of list');
-        strictEqual(itemsList.tail.item, itemsArray[0], 'correct item at tail of list');
+        strictEqual(itemsList.head.item, itemsArray[0], 'correct item at head of list');
+        strictEqual(itemsList.tail.item, itemsArray[itemsArray.length - 1], 'correct item at end of list');
     });
 
     test('LinkedList#remove()', function() {
@@ -83,8 +53,38 @@ var _c = _c || {};
         );
     });
 
-    test('LinkedList#iterator()', function() {
+    test('LinkedList#add()', function() {
         addItems();
+        strictEqual(itemsList.length, itemsArray.length, 'list has correct length');
+        strictEqual(itemsList.head.item, itemsArray[itemsArray.length - 1], 'correct item at head of list');
+        strictEqual(itemsList.tail.item, itemsArray[0], 'correct item at tail of list');
+    });
+
+    test('LinkedList#pop()', function() {
+        var expectedLength = itemsArray.length;
+
+        addItems();
+        itemsArray.forEach(function(val) {
+            strictEqual(itemsList.length, expectedLength--, 'list has correct length');
+            strictEqual(itemsList.pop(), val, 'correct value removed from list');
+        });
+        strictEqual(itemsList.length, 0, 'length 0 after all items removed');
+        throws(function() {
+                itemsList.pop();
+            },
+            _c.error.NoSuchElementException,
+            'raised error calling pop() on empty list is an instance of NoSuchElementException'
+        );
+        throws(function() {
+                itemsList.pop();
+            },
+            Error,
+            'raised error calling pop() on empty list is an instance of Error'
+        );
+    });
+
+    test('LinkedList#iterator()', function() {
+        pushItems();
         var iter = itemsList.iterator(),
             i = 0;
 
@@ -110,5 +110,17 @@ var _c = _c || {};
 
         it1.next();
         ok(it1.next() === itemsArray[1] && it2.next() === itemsArray[0], 'distinct iterators move independently');
+    });
+
+    test('LinkedList#forEach()', function() {
+        var arr = [];
+
+        pushItems();
+        itemsList.forEach(function(item) {
+            arr.push(item);
+        });
+        itemsArray.forEach(function(item, i) {
+            strictEqual(arr[i], item, 'correct item pushed');
+        });
     });
 })(_c);
