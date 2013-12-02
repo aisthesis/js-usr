@@ -39,6 +39,6 @@ var _c = _c || {};
      */
     _c.utils.randomlyChoose = function(items, howMany) {
         "use strict";
-        return _c.shuffle(items, howMany).slice(0, howMany || items.length);
+        return _c.utils.shuffle(items, howMany).slice(0, howMany || items.length);
     };
 })(_c);
