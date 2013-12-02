@@ -6,26 +6,28 @@ var _c = _c || {};
 
 (function(_c) {
     'use strict';
-    var _Iterator = _c.Base.extend({
-        init: function(list) {
-            this.list = list;
-            this.pointer = list.head;
-        },
 
-        next: function() {
-            if (this.pointer === null) {
+    /**
+     * Traditional constructor allows us to hide _pointer as 
+     * private member
+     */
+    function _Iterator(list) {
+        var _pointer = list.head;
+
+        this.next = function() {
+            if (_pointer === null) {
                 throw new _c.error.NoSuchElementException('No more elements to traverse');
             }
-            var item = this.pointer.item;
+            var item = _pointer.item;
 
-            this.pointer = this.pointer.next;
+            _pointer = _pointer.next;
             return item;
-        },
+        };
 
-        hasNext: function() {
-            return this.pointer !== null;
+        this.hasNext = function() {
+            return _pointer !== null;
         }
-    });
+    };
 
     _c.error = _c.error || {};
     if (!_c.error.NoSuchElementException) {

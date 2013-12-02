@@ -104,5 +104,11 @@ var _c = _c || {};
             Error,
             'calling next() at end of list throws an instance of Error'
         );
+
+        var it1 = itemsList.iterator(),
+            it2 = itemsList.iterator();
+
+        it1.next();
+        ok(it1.next() === itemsArray[1] && it2.next() === itemsArray[0], 'distinct iterators move independently');
     });
 })(_c);
