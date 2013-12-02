@@ -82,4 +82,27 @@ var _c = _c || {};
             'raised error calling remove() on empty list is an instance of Error'
         );
     });
+
+    test('LinkedList#iterator()', function() {
+        addItems();
+        var iter = itemsList.iterator(),
+            i = 0;
+
+        while (iter.hasNext()) {
+            strictEqual(iter.next(), itemsArray[i++], 'iterator points to correct element');
+        }
+        strictEqual(itemsList.length, itemsArray.length, 'list still has correct length');
+        throws(function() {
+                iter.next();
+            },
+            _c.error.NoSuchElementException,
+            'calling next() at end of list throws NoSuchElementException'
+        );
+        throws(function() {
+                iter.next();
+            },
+            Error,
+            'calling next() at end of list throws an instance of Error'
+        );
+    });
 })(_c);

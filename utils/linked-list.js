@@ -6,6 +6,27 @@ var _c = _c || {};
 
 (function(_c) {
     'use strict';
+    var Iterator = _c.Base.extend({
+        init: function(list) {
+            this.list = list;
+            this.pointer = list.head;
+        },
+
+        next: function() {
+            if (this.pointer === null) {
+                throw new _c.error.NoSuchElementException('No more elements to traverse');
+            }
+            var item = this.pointer.item;
+
+            this.pointer = this.pointer.next;
+            return item;
+        },
+
+        hasNext: function() {
+            return this.pointer !== null;
+        }
+    });
+
     _c.error = _c.error || {};
     if (!_c.error.NoSuchElementException) {
         _c.error.NoSuchElementException = function(message) {
@@ -75,7 +96,7 @@ var _c = _c || {};
         },
 
         iterator: function() {
-            // TODO
+            return new Iterator(this);
         }
     });
 
