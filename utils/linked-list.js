@@ -6,7 +6,7 @@ var _c = _c || {};
 
 (function(_c) {
     'use strict';
-    var Iterator = _c.Base.extend({
+    var _Iterator = _c.Base.extend({
         init: function(list) {
             this.list = list;
             this.pointer = list.head;
@@ -96,7 +96,7 @@ var _c = _c || {};
         },
 
         iterator: function() {
-            return new Iterator(this);
+            return new _Iterator(this);
         }
     });
 
